@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Averia+Libre:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&family=Ballet:opsz@16..72&family=Dancing+Script:wght@400..700&family=Kaushan+Script&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body{
+    margin: 0;
+    padding: 10px;
+    color: #04192b;
+    background-color: #38598b;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #a2a8d3;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: #10324f 2px 2px 5px 3px;
+}
+
+header{
+    font-family: "Kaushan Script", cursive;
+    font-size: 25px;
+    color: #e7eaf6;
+}
+
+.inputes {
+    font-family: "Averia Libre", system-ui;
+    font-size: 20px;
+    font-weight: 100;
+    color: #03121f;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    margin-top: 10px;
+    padding: 5px;
+    height: 30px;
+    width: 100px;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    color: white;
+    background-color: #595e9e;
+    border: 2px solid #2c2f59;
+    border-radius: 5px;
+}
+
+.btn:active{
+    background-color: #10324f;
+    transform: translateY(2px);
+}
+
+.main2{
+    font-family: "Dancing Script", system-ui;
+    font-weight: 600;
+    font-size: 22px;
+    color: #0a0d38;
+    display: none;
+}
+
+.main2>div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (max-width: 600px){
+    .inputes label{
+        display: flex;
+        flex-direction: column;
+    }
+} 
