@@ -1,5 +1,13 @@
 console.log("Let's write JS");
 
+function twoDPs(value) {
+    // Check if the value is a decimal
+    if (value % 1 !== 0) {
+        return parseFloat(value.toFixed(2)); // Convert to 2 decimal places
+    }
+    return value; // Return the integer as is
+}
+
 function checkTheParameters() {
     const a = parseFloat(document.querySelector("#a").value);
     const h = parseFloat(document.querySelector("#h").value);
@@ -19,16 +27,16 @@ function checkTheParameters() {
     let D = a*b - h**2
 
     let AsumB = a + b;
-    let AdiffB = (AsumB**2 - 4*D)**(1/2)
-    let valueOfA = (AsumB + AdiffB)/2
-    let valueOfB = (AsumB - AdiffB)/2
-    let valueofa2 = (AsumB - AdiffB)/2
-    let valueofb2 = (AsumB + AdiffB)/2
-    let detDivD = det/D
-    let coeffX1 = -detDivD/valueOfA
-    let coeffX2 = -detDivD/valueofa2
-    let coeffY1 = -detDivD/valueOfB
-    let coeffY2 = -detDivD/valueofb2
+    let AdiffB = twoDPs((AsumB**2 - 4*D)**(1/2))
+    let valueOfA = twoDPs((AsumB + AdiffB)/2)
+    let valueOfB = twoDPs((AsumB - AdiffB)/2)
+    let valueofa2 = twoDPs((AsumB - AdiffB)/2)
+    let valueofb2 = twoDPs((AsumB + AdiffB)/2)
+    let detDivD = twoDPs(det/D)
+    let coeffX1 = twoDPs(-detDivD/valueOfA)
+    let coeffX2 = twoDPs(-detDivD/valueofa2)
+    let coeffY1 = twoDPs(-detDivD/valueOfB)
+    let coeffY2 = twoDPs(-detDivD/valueofb2)
 
     let main2Div = document.querySelector(".main2");
     let equationType;
