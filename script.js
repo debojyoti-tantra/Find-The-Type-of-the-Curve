@@ -20,72 +20,72 @@ function checkTheParameters() {
 
     let AsumB = a + b;
     let AdiffB = (AsumB**2 - 4*D)**(1/2)
-
+    let valueOfA = (AsumB + AdiffB)/2
+    let valueOfB = (AsumB - AdiffB)/2
+    let valueofa2 = (AsumB - AdiffB)/2
+    let valueofb2 = (AsumB + AdiffB)/2
+    let detDivD = det/D
+    let coeffX1 = -detDivD/valueOfA
+    let coeffX2 = -detDivD/valueofa2
+    let coeffY1 = -detDivD/valueOfB
+    let coeffY2 = -detDivD/valueofb2
 
     let main2Div = document.querySelector(".main2");
+    let equationType;
     
     if (isNaN(a) || isNaN(h) || isNaN(b) || isNaN(g) || isNaN(f) || isNaN(c)) {
         main2Div.innerHTML = `<section style="color: red">Please Enter complete data</section>`
         main2Div.style.display="block";
-    } else if (det === 0) {
+    } else {
         main2Div.innerHTML = `
-        <div class="delta">Delta = ${a}(${b} * ${c} - ${f} * ${f}) - ${h}(${h} * ${c} - ${g} * ${f}) + ${g}(${h} * ${f} - ${b} * ${g})</div>
-        <div class="deltaa">Delta = ${det}</div>
-        <div class="D">D = ${D}</div>
-        <div class="type">The given Equation represents a pair of Straight Line</div>
-        <div class="AsumB">A + B = a + b = ${a+b}</div>
-        <div class="AB">A.B = ab - h² = ${D}</div>
-        <div class="AdiffB">A - B = +${AdiffB} or -${AdiffB}</div>`
+        <div class="delta">Delta = ${a}(${b} x ${c} - ${f} x ${f}) - ${h}(${h} x ${c} - ${g} x ${f}) + ${g}(${h} x ${f} - ${b} x ${g})</div>
+        <div class="deltaa" style="color: #0e1c78;">Delta = ${det}</div>
+        <div class="D" style="color: #0e1c78;">D = ${D}</div>`
         main2Div.style.display="block";
-    } else if (det !== 0 && D>0) {
-        main2Div.innerHTML = `
-        <div class="delta">Delta = ${a}(${b} * ${c} - ${f} * ${f}) - ${h}(${h} * ${c} - ${g} * ${f}) + ${g}(${h} * ${f} - ${b} * ${g})</div>
-        <div class="deltaa">Delta = ${det}</div>
-        <div class="D">D = ${D}</div>
-        <div class="type">The given Equation represents a Ellipse</div>
-        <div class="AsumB">A + B = a + b = ${a+b}</div>
+        // document.querySelector(".deltaa .D").style.color="#202b75"
+
+        if (det === 0) {
+            main2Div.innerHTML = main2Div.innerHTML + `
+            <div class="type">The given Equation represents a pair of Straight Line</div>`
+        } else if (det !== 0 && D>0) {
+            main2Div.innerHTML = main2Div.innerHTML + `
+            <div class="type">The given Equation represents a Ellipse</div>`
+            equationType = "Ellipse"
+        } else if (det !== 0 && a+b!==0 && D<0) {
+            main2Div.innerHTML = main2Div.innerHTML + `
+            <div class="type">The given Equation represents a Hyperbola</div>`
+            equationType = "Hyperbola"
+        } else if (det !== 0 && a+b===0 && D<0) {
+            main2Div.innerHTML = main2Div.innerHTML + `
+            <div class="type">The given Equation represents a Rectangular Hyperbola</div>`
+            equationType = "Hyperbola"
+        } else if (det !== 0 && D===0) {
+            main2Div.innerHTML = main2Div.innerHTML + `
+            <div class="type">The given Equation represents a Parabola</div>`
+        } else if (det !== 0 && a===b && h===0) {
+            main2Div.innerHTML = main2Div.innerHTML + `
+            <div class="type">The given Equation represents a Circle</div>`
+        }
+        document.querySelector(".type").style.color="#870005"
+        
+        main2Div.innerHTML = main2Div.innerHTML + `
+        <div class="AsumB" style="color: #4b0354;">A + B = a + b = ${AsumB}</div>
         <div class="AB">A.B = ab - h² = ${D}</div>
-        <div class="AdiffB">A - B = +${AdiffB} or -${AdiffB}</div>`
-        main2Div.style.display="block";
-    } else if (det !== 0 && a+b!==0 && D<0) {
-        main2Div.innerHTML = `
-        <div class="delta">Delta = ${a}(${b} * ${c} - ${f} * ${f}) - ${h}(${h} * ${c} - ${g} * ${f}) + ${g}(${h} * ${f} - ${b} * ${g})</div>
-        <div class="deltaa">Delta = ${det}</div>
-        <div class="D">D = ${D}</div>
-        <div class="type">The given Equation represents a Hyperbola</div>
-        <div class="AsumB">A + B = a + b = ${a+b}</div>
-        <div class="AB">A.B = ab - h² = ${D}</div>
-        <div class="AdiffB">A - B = +${AdiffB} or -${AdiffB}</div>`
-        main2Div.style.display="block";
-    } else if (det !== 0 && a+b===0 && D<0) {
-        main2Div.innerHTML = `
-        <div class="delta">Delta = ${a}(${b} * ${c} - ${f} * ${f}) - ${h}(${h} * ${c} - ${g} * ${f}) + ${g}(${h} * ${f} - ${b} * ${g})</div>
-        <div class="deltaa">Delta = ${det}</div>
-        <div class="D">D = ${D}</div>
-        <div class="type">The given Equation represents a Rectangular Hyperbola</div>
-        <div class="AsumB">A + B = a + b = ${a+b}</div>
-        <div class="AB">A.B = ab - h² = ${D}</div>
-        <div class="AdiffB">A - B = +${AdiffB} or -${AdiffB}</div>`
-        main2Div.style.display="block";
-    } else if (det !== 0 && D===0) {
-        main2Div.innerHTML = `
-        <div class="delta">Delta = ${a}(${b} * ${c} - ${f} * ${f}) - ${h}(${h} * ${c} - ${g} * ${f}) + ${g}(${h} * ${f} - ${b} * ${g})</div>
-        <div class="deltaa">Delta = ${det}</div>
-        <div class="D">D = ${D}</div>
-        <div class="type">The given Equation represents a Parabola</div>
-        <div class="AsumB">A + B = a + b = ${a+b}</div>
-        <div class="AB">A.B = ab - h² = ${D}</div>
-        <div class="AdiffB">A - B = +${AdiffB} or -${AdiffB}</div>`
-        main2Div.style.display="block";
-    } else if (det !== 0 && a===b && h===0) {
-        main2Div.innerHTML = `
-        <div class="delta">Delta = ${a}(${b} * ${c} - ${f} * ${f}) - ${h}(${h} * ${c} - ${g} * ${f}) + ${g}(${h} * ${f} - ${b} * ${g})</div>
-        <div class="deltaa">Delta = ${det}</div>
-        <div class="D">D = ${D}</div>
-        <div class="type">The given Equation represents a Circle</div>
-        <div class="AsumB">A + B = a + b = ${a+b}</div>
-        <div class="AB">A.B = ab - h² = ${D}</div>
-        <div class="AdiffB">A - B = +${AdiffB} or -${AdiffB}</div>`
-        main2Div.style.display="block";
+        <div class="AdiffB" style="color: #4b0354;">A - B = +${AdiffB} or -${AdiffB}</div>
+        <div class="valueOf" style="color: #004212;">
+            <div class="valueOf1">If A - B = +${AdiffB}:<br>A = ${valueOfA}<br>B = ${valueOfB}</div>
+        <div class="valueOf2">If A - B = -${AdiffB}:<br>A = ${valueofa2}<br>B = ${valueofb2}</div>
+        </div>
+        `
+        document.querySelector(".valueOf").style.gap="15px"
+        
+        if (D>0 || D<0) {
+            main2Div.innerHTML = main2Div.innerHTML + `
+            <div>The Equation of ${equationType} is:</div>
+            <div>(${valueOfA})X² + (${valueOfB})Y² + (${detDivD}) = 0 <br> X²/(${coeffX1}) + Y²/(${coeffY1}) = 1 <br>or,</div>
+            <div>(${valueofa2})X² + (${valueofb2})Y² + (${detDivD}) = 0 <br> X²/(${coeffX2}) + Y²/(${coeffY2}) = 1</div>
+            `
+        }
     }
+    
 }
