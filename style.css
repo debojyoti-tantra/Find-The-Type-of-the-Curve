@@ -42,7 +42,7 @@ header{
 input{
     color: black;
     background-color: white;
-    border: 2px solid black;
+    border: 1px solid black;
     border-radius: 5px;
 }
 
@@ -73,7 +73,8 @@ input{
     font-family: "Dancing Script", system-ui;
     font-weight: 600;
     font-size: 22px;
-    color: #0a0d38;
+    color: black;
+    background-color: #cacfe0;
     display: none;
 }
 
